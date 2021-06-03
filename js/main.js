@@ -1,14 +1,25 @@
-// const h1DOM = document.querySelector('h1');
-// h1DOM.classList.add('antraste');
+let rezultatas = 0;
+const gryzta = 'Te prasideda zaidynes';
 
-const h1DOM = document.querySelector('h1');
-h1DOM.innerText = 'Zuikio pomidoras darzas';
-h1DOM.classList.add('pavadinimas')
+const minusDOM = document.querySelector('.minus');
+const plusDOM = document.querySelector('.plus');
+const numberDOM = document.querySelector('.number');
+const resetDOM = document.querySelector('.reset');
+const antrasteDOM = document.querySelector('h1')
 
+minusDOM.addEventListener('click', () => {
+    numberDOM.innerText = --rezultatas;
+    antrasteDOM.innerText = 'Zaidimas prasideda';
 
-const liDOM = document.querySelectorAll('li');
-for (let i = 0; i < liDOM.length; i++) {
-    liDOM[i].innerText = 'Pomidoras, bet ne raudonas';
-    liDOM[i].classList.add('pomidoras')
+})
 
-}
+plusDOM.addEventListener('click', () => {
+    numberDOM.innerText = ++rezultatas;
+    antrasteDOM.innerText = 'Zaidimas prasideda';
+})
+
+resetDOM.addEventListener('click', () => {
+    rezultatas = 0;
+    numberDOM.innerText = rezultatas;
+    antrasteDOM.innerText = gryzta;
+})
