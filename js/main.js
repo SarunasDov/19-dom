@@ -1,4 +1,4 @@
-// const h1DOM = document.querySelector('h1')
+/*
 const lentaDOM = document.querySelector('.lenta');
 const namuRezDOM = lentaDOM.querySelector('[data-komanda="namu"]');
 const sveciuRezDOM = lentaDOM.querySelector('[data-komanda="sveciu"]');
@@ -31,5 +31,33 @@ for (let i = 0; i < taskaiSveciuDOM.length; i++) {
     })
 }
 
+*/
 
-// const namuFormDOM = document.querySelectorAll('[data-points="1"]');
+// const lentaDOM = document.querySelector('.lenta');
+// const divDOM = document.querySelector('.div');
+
+
+function generuotiLenta(selector, count) {
+    const DOM = document.querySelector(selector);
+    if (!DOM) {
+        console.error('ERROR: nerastas elementas');
+        return false;
+    }
+
+    if (count < 0 ||
+        count % 1 !== 0) {
+        console.error('ERROR: skaicius turi buti teigiamas');
+        return false;
+    }
+
+    let HTML = '';
+    for (let i = 1; i <= count; i++) {
+        HTML += `<div>${i}</div>`;
+
+    }
+
+    DOM.innerHTML = HTML;
+
+}
+
+generuotiLenta('.lenta', 4);
