@@ -1,49 +1,35 @@
-const submitDOM = document.querySelector('button');
-const orderDOM = document.querySelector('.order');
-const nameDOM = document.querySelector('#customer');
-const sriubaDOM = document.querySelector('#sriuba');
-const pagrindinisPatiekalasDOM = document.querySelector('#patiekalas');
-const desertasDOM = document.querySelector('#desertas');
-const allGerimaiDOM = document.querySelectorAll('input[name="gerimas"]');
+// const h1DOM = document.querySelector('h1')
+const lentaDOM = document.querySelector('.lenta');
+const namuRezDOM = lentaDOM.querySelector('[data-komanda="namu"]');
+const sveciuRezDOM = lentaDOM.querySelector('[data-komanda="sveciu"]');
 
-function arNoriu(DOM) {
-    return DOM.checked ? 'nori' : 'nenori';
+const aiksteleDOM = document.querySelector('.aikstele');
+const namuKomandaDOM = aiksteleDOM.querySelector('[data-komanda="namu"]');
+const taskaiNamuDOM = namuKomandaDOM.querySelectorAll('button');
+
+const sveciuKomandaDOM = aiksteleDOM.querySelector('[data-komanda="sveciu"]');
+const taskaiSveciuDOM = sveciuKomandaDOM.querySelectorAll('button');
+
+
+let namuKomandosTaskai = 0;
+
+for (let i = 0; i < taskaiNamuDOM.length; i++) {
+    const mygtukas = taskaiNamuDOM[i];
+    mygtukas.addEventListener('click', () => {
+        namuKomandosTaskai += i + 1;
+        namuRezDOM.innerText = namuKomandosTaskai;
+    })
 }
 
-function kurisPazymetas(DOMlist) {
-    for (const itemDOM of DOMlist) {
-        if (itemDOM.checked) {
-            return itemDOM.value;
-        }
-    }
+let sveciuKomandosTaskai = 0;
+
+for (let i = 0; i < taskaiSveciuDOM.length; i++) {
+    const mygtukas = taskaiSveciuDOM[i];
+    mygtukas.addEventListener('click', () => {
+        sveciuKomandosTaskai += i + 1;
+        sveciuRezDOM.innerText = sveciuKomandosTaskai;
+    })
 }
 
-submitDOM.addEventListener('click', (e) => {
-    e.preventDefault();
 
-    const vardas = nameDOM.value.trim();
-    const pasirinktasGerimas = kurisPazymetas(allGerimaiDOM);
-    const sakinioPradzia = vardas ? 'vardu ' + vardas : 'nenudores vardo';
-    const sakinioPabaiga = pasirinktasGerimas ? pasirinktasGerimas + ' yra pasirinktas gerimas' : 'gerimo nepasirinko';
-
-    orderDOM.innerText = `Uzsakovas ${sakinioPradzia} ${arNoriu(sriubaDOM)} sriubos, ${arNoriu(pagrindinisPatiekalasDOM)} pagrindinio patiekalo, ${arNoriu(desertasDOM)} deserto ir ${sakinioPabaiga}.`;
-})
-
-/*
-PRADZIA:
-Uzsakovas vardu X nori....
-Uzsakovas nenurodes vardo nori....
-
-PABAIGA:
-ir X yra pasirinktas gerimas.
-ir gerimo nepasirinko.
-
-
-EXTRA:
-Uzsakovas vardu X nori sriubos, pagrindinio patiekalo, deserto ir [gerimas]
-Uzsakovas vardu X nori sriubos, pagrindinio patiekalo, bet nenori deserto ir [gerimas]
-Uzsakovas vardu X nori sriubos, bet nenori pagrindinio patiekalo, deserto ir [gerimas]
-Uzsakovas vardu X nenori sriubos, pagrindinio patiekalo, deserto ir [gerimas]
-
-
-*/
+// const namuFormDOM = document.querySelectorAll('[data-points="1"]');

@@ -3,29 +3,29 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  font-size: 20px;
+  padding: 40px;
+}
+.lenta {
+  display: flex;
+  gap: 40px;
+  padding: 20px 80px;
+  font-size: 100px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+.aikstele {
+  display: flex;
+  gap: 40px;
+}
+h2 {
+  font-size: 30px;
 }
 form {
   display: flex;
-  width: 300px;
   flex-direction: column;
-  gap: 15px;
-}
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.form-row > .inline {
-  display: flex;
   gap: 20px;
 }
 button {
-  padding: 10px 40px;
+  line-height: 50px;
   font-size: 30px;
-}
-.order {
-  width: 300px;
-  padding: 40px;
-  border: 5px dotted #36f;
 }
