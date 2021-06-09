@@ -1,59 +1,62 @@
-
-// function generuotiSocials(selector, array) {
-//     const iconsDOM = document.querySelector(selector);
-//     if (!Array.isArray(array) ||
-//         array.length === 0) {
-//         console.error('ERROR: nerastas elementas');
-//         return false;
-//     }
-
-//     let HTML = '';
-//     for (let element of array) {
-//         HTML += `<i class="fa fa-${element}"></i>`;
-//     }
-//     iconsDOM.innerHTML = HTML;
-// }
-
-
-// const icons = ['facebook', 'twitter', 'linkedin'];
-// const icons1 = [];
-// generuotiSocials('.socials', icons1);
-
-
-
-
-
-
-function generuotiSocials(selector, icons) {
-
-    if (selector === '' ||
-        typeof selector !== 'string') {
-        console.error('ERROR: nerastas elementas');
+function renderNav(selector, iconsList) {
+    // validation
+    if (typeof selector !== 'string' ||
+        selector === '') {
+        console.error('ERROR: selector turi buti ne tuscias stringas', selector, iconsList);
         return false;
     }
 
-    if (!Array.isArray(icons) ||
-        icons.length === 0) {
-        console.error('ERROR: negali buti tuscias');
+    const DOM = document.querySelector(selector);
+    if (!DOM) {
+        console.error('ERROR: pagal pateikta selector nepavyko rasti jokio DOM elemento');
         return false;
     }
 
-    const iconsDOM = document.querySelector(selector);
-    if (!iconsDOM) {
-        console.error('ERROR: nepavyko rasti elemento');
+    if (!Array.isArray(iconsList) ||
+        iconsList.length === 0) {
+        console.error('ERROR: iconsList turi buti ne tuscias array');
         return false;
     }
 
+    // logic
     let HTML = '';
-    for (let i = 0; i < icons.length; i++) {
-        if (typeof icons[i] === 'string' &&
-            icons[i] !== '') {
-            HTML += `<i class="fa fa-${icons[i]}"></i>`;
+    const availableIcons = ['facebook', 'twitter', 'linkedin', 'instagram', 'pinterest'];
+
+    for (const icon of iconsList) {
+        if (typeof icon === 'string' &&
+            icon !== '' &&
+            availableIcons.includes(icon)) {
+            HTML += `<i class="fa fa-${icon}"></i>`;
         }
     }
 
-    iconsDOM.innerHTML = HTML;
+    // post-logic validation
+    if (HTML === '') {
+        console.error('ERROR: iconsList turi tureti bent viena elementa kuris buti ne tuscias tekstas');
+        return false;
+    }
 
+    // result return
+    DOM.innerHTML = HTML;
 }
-const icons = ['facebook', 5, [], 'twitter', 'linkedin'];
-generuotiSocials('.socials', icons);
+
+const menu = [
+    {
+        href: '#',
+        title: 'Home'
+    },
+    {
+        href: '#',
+        title: 'Services'
+    },
+    {
+        href: '#',
+        title: 'About us'
+    },
+    {
+        href: '#',
+        title: 'Contact us'
+    }
+];
+
+renderNav('header', menu);
