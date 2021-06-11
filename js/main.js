@@ -1,33 +1,34 @@
-function renderNav(selector, linkList) {
-    const imgDOM = document.querySelector('Logo');
-    const headerDOM = document.querySelector('header');
+
+const animals = ['zuikis', 'barsukas', 'lape', 'vilkas', 'stirna', 'vovere'];
+
+function favoriteAnimals(selector, data) {
+    //Validations
+
+    //Logic
+    const selectorDOM = document.querySelector(selector);
+    const labelDOM = document.querySelector('label');
+    const button = document.querySelector('button');
+
     let HTML = '';
-    for (const menuItems of linkList) {
-        HTML += `<a href="${menuItems.href}">${menuItems.title}</a>`;
 
-
+    for (const item of data) {
+        HTML += `<option value="${item}">${item}</option>`
     }
-    headerDOM.innerHTML += `<nav>${HTML}</nav>`;
-    //imgDOM.insertAdjacentHTML("afterend", `<nav>${HTML}</nav>`);
+
+    labelDOM.insertAdjacentHTML('afterend', `<select>${HTML}</select>`);
+
+    const selectDOM = document.querySelector('select');
+    selectDOM.classList.add('test');
+    const spanDOM = document.querySelector('.option');
+    spanDOM.classList.add('test');
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        spanDOM.innerText = selectDOM.value;
+    });
+
+    // post Logic Validations
 }
 
-const menu = [
-    {
-        href: '#',
-        title: 'Home'
-    },
-    {
-        href: '#',
-        title: 'Services'
-    },
-    {
-        href: '#',
-        title: 'About us'
-    },
-    {
-        href: '#',
-        title: 'Contact us'
-    }
-];
+console.log(favoriteAnimals('form', animals));
 
-renderNav('header', menu);
