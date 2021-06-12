@@ -1,5 +1,5 @@
 
-function renderSelect(selector, dataList) {
+function renderSelect(selector, dataList, id) {
     const DOM = document.querySelector(selector);
 
     let optionsHTML = '';
@@ -7,12 +7,15 @@ function renderSelect(selector, dataList) {
         optionsHTML += `<option value="${dataItem}">${dataItem}</option>`;
     }
 
-    const HTML = `<select>${optionsHTML}</select>`;
+    const HTML = `<select id="${id}">${optionsHTML}</select>`;
     DOM.insertAdjacentHTML('afterend', HTML);
 }
 
 const animals = ['zuikis', 'barsukas', 'lape', 'vilkas', 'sernas', 'stirna', 'vovere'];
-renderSelect('label', animals);
+renderSelect('label[for"animal"]', animals, 'animal');
+
+const animals = ['morkos', 'pomidoras', 'svogunas', 'bulve'];
+renderSelect('label[for"vegetable"]', animals, 'vegetable');
 
 const selectDOM = document.querySelector('select');
 const buttonDOM = document.querySelector('button');
