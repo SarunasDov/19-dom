@@ -1,34 +1,24 @@
 
-const animals = ['zuikis', 'barsukas', 'lape', 'vilkas', 'stirna', 'vovere'];
+function renderSelect(selector, dataList) {
+    const DOM = document.querySelector(selector);
 
-function favoriteAnimals(selector, data) {
-    //Validations
-
-    //Logic
-    const selectorDOM = document.querySelector(selector);
-    const labelDOM = document.querySelector('label');
-    const button = document.querySelector('button');
-
-    let HTML = '';
-
-    for (const item of data) {
-        HTML += `<option value="${item}">${item}</option>`
+    let optionsHTML = '';
+    for (const dataItem of dataList) {
+        optionsHTML += `<option value="${dataItem}">${dataItem}</option>`;
     }
 
-    labelDOM.insertAdjacentHTML('afterend', `<select>${HTML}</select>`);
-
-    const selectDOM = document.querySelector('select');
-    selectDOM.classList.add('test');
-    const spanDOM = document.querySelector('.option');
-    spanDOM.classList.add('test');
-
-    button.addEventListener('click', (event) => {
-        event.preventDefault();
-        spanDOM.innerText = selectDOM.value;
-    });
-
-    // post Logic Validations
+    const HTML = `<select>${optionsHTML}</select>`;
+    DOM.insertAdjacentHTML('afterend', HTML);
 }
 
-console.log(favoriteAnimals('form', animals));
+const animals = ['zuikis', 'barsukas', 'lape', 'vilkas', 'sernas', 'stirna', 'vovere'];
+renderSelect('label', animals);
 
+const selectDOM = document.querySelector('select');
+const buttonDOM = document.querySelector('button');
+const optionDOM = document.querySelector('.option');
+
+buttonDOM.addEventListener('click', (event) => {
+    event.preventDefault();
+    optionDOM.innerText = selectDOM.value;
+})
