@@ -13,11 +13,13 @@
 </head>
 
 <body>
-    <h1>Mano pasirinkimas yra <span class="option"></span></h1>
+    <h1>Sachmatu lenta (<span class="option"></span>)</h1>
     <form>
-        <label for="animal">Mano megstamiausias gyvunas:</label>
-        <button type="submit">Pasirinkti</button>
+        <label for="board">Kokio dydzio lentos nori?</label>
+        <input id="board" type="number">
+        <button type="submit">Generuoti</button>
     </form>
+    <div class="board"></div>
 
     <script src="./js/main.js" type="module" defer></script>
 </body>

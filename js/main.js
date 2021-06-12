@@ -1,27 +1,19 @@
+// const lentosdydisDOM = document.querySelector('.option');
+// const submitDOM = document.querySelector('button');
+// const lentosInputDOM = document.querySelector('#board');
 
-function renderSelect(selector, dataList, id) {
-    const DOM = document.querySelector(selector);
+// submitDOM.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     lentosdydisDOM.innerText = lentosInputDOM.value + 'x' + lentosInputDOM.value;
+// })
 
-    let optionsHTML = '';
-    for (const dataItem of dataList) {
-        optionsHTML += `<option value="${dataItem}">${dataItem}</option>`;
-    }
 
-    const HTML = `<select id="${id}">${optionsHTML}</select>`;
-    DOM.insertAdjacentHTML('afterend', HTML);
-}
+// const button = document.querySelector('button');
+// const input = document.querySelector('#board');
+// const board = document.querySelector('.board');
+// const option = document.querySelector('.option');
 
-const animals = ['zuikis', 'barsukas', 'lape', 'vilkas', 'sernas', 'stirna', 'vovere'];
-renderSelect('label[for"animal"]', animals, 'animal');
-
-const animals = ['morkos', 'pomidoras', 'svogunas', 'bulve'];
-renderSelect('label[for"vegetable"]', animals, 'vegetable');
-
-const selectDOM = document.querySelector('select');
-const buttonDOM = document.querySelector('button');
-const optionDOM = document.querySelector('.option');
-
-buttonDOM.addEventListener('click', (event) => {
-    event.preventDefault();
-    optionDOM.innerText = selectDOM.value;
-})
+// button.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     option.innerText = `${input.value}x${input.value}`;
+// })
